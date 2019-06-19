@@ -23,7 +23,13 @@ eureka:
       zone-2: http://peer2:8762/eureka/
       zone-3: http://peer3:8763/eureka/
 
-# 消费者服务名
 spring:
   application:
-    name: consumer01
+    name: consumer
+
+consumer:
+  ribbon:
+    eureka:
+      enabled: true
+    #listOfServers: peer1:8081,peer2:8082,peer3:8083 # 从这三个服务中选取（写死）
+    ServerListRefreshInterval: 15000

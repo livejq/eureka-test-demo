@@ -25,41 +25,40 @@ eureka:
 
 # 生产者服务名
 spring:
-  profiles: producer01
   application:
-    name: producer01  # 调用的时候根据名称来调用该服务的方法
-
----
-
-server:
-  port: 8082  # 服务端口号
-
-eureka:
-  instance:
-    lease-renewal-interval-in-seconds: 10 # client 隔多久去拉取服务注册信息，默认为30秒
-    prefer-ip-address: true # 客户端在注册时就会使用自己的ip地址而不是主机名
-    metadata-map:
-      zone: zone-2  # 声明 Eureka Server 的所在区域
-  client:
-    registry-fetch-interval-seconds: 8 # 心跳时间，即服务续约间隔时间（缺省为30s）
-    register-with-eureka: true
-    fetch-registry: true
-    prefer-same-zone-eureka: true
-
-    # 地区
-    region: Guangzhou
-    availability-zones:
-      Guangzhou: zone-2, zone-1, zone-3 # 机房列表 优先使用首位置中声明的机房中的服务
-    service-url:
-      zone-1: http://peer1:8761/eureka/
-      zone-2: http://peer2:8762/eureka/
-      zone-3: http://peer3:8763/eureka/
-
-# 生产者服务名
-spring:
-  profiles: producer02
-  application:
-    name: producer02  # 调用的时候根据名称来调用该服务的方法
+    name: producer  # 调用的时候根据名称来调用该服务的方法
+#
+#---
+#
+#server:
+#  port: 8082  # 服务端口号
+#
+#eureka:
+#  instance:
+#    lease-renewal-interval-in-seconds: 10 # client 隔多久去拉取服务注册信息，默认为30秒
+#    prefer-ip-address: true # 客户端在注册时就会使用自己的ip地址而不是主机名
+#    metadata-map:
+#      zone: zone-1  # 声明 Eureka Server 的所在区域（优先在那里注册）
+#  client:
+#    registry-fetch-interval-seconds: 8 # 心跳时间，即服务续约间隔时间（缺省为30s）
+#    register-with-eureka: true
+#    fetch-registry: true
+#    prefer-same-zone-eureka: true
+#
+#    # 地区
+#    region: Guangzhou
+#    availability-zones:
+#      Guangzhou: zone-1, zone-2, zone-3 # 机房列表 优先使用首位置中声明的机房中的服务
+#    service-url:
+#      zone-1: http://peer1:8761/eureka/
+#      zone-2: http://peer2:8762/eureka/
+#      zone-3: http://peer3:8763/eureka/
+#
+## 生产者服务名
+#spring:
+#  profiles: producer02
+#  application:
+#    name: producer02  # 调用的时候根据名称来调用该服务的方法
 
 
 
