@@ -1,0 +1,29 @@
+
+server:
+  port: 8888
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10  # client 隔多久去拉取服务注册信息，默认为30秒
+    metadata-map:
+      zone: zone-1 # 声明 Eureka Server 的所在区域
+  client:
+    registry-fetch-interval-seconds: 8 # 心跳时间，即服务续约间隔时间（缺省为30s）
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+
+    # 地区
+    region: Guangzhou
+    availability-zones:
+      Guangzhou: zone-1, zone-2, zone-3 # 机房列表 优先使用首位置中声明的机房中的服务
+    service-url:
+      zone-1: http://peer1:8761/eureka/
+      zone-2: http://peer2:8762/eureka/
+      zone-3: http://peer3:8763/eureka/
+
+# 消费者服务名
+spring:
+  application:
+    name: consumer01
